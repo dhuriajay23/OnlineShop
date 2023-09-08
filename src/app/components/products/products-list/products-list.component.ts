@@ -10,11 +10,11 @@ export class ProductsListComponent implements OnInit {
 
   products: Product[] = [
     {
-      id : '1',
-      name : 'CD',
-      category : 'Storage',
-      price : 100,
-      quantity : 20
+      id: '1',
+      name: 'CD',
+      category: 'Storage',
+      price: 100,
+      quantity: 20
     },
     {
       id: '2',
@@ -26,7 +26,7 @@ export class ProductsListComponent implements OnInit {
     {
       id: '3',
       name: 'SSD',
-      category: '',
+      category: 'Premium Storage',
       price: 500,
       quantity: 5
     }
