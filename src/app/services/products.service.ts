@@ -24,4 +24,8 @@ export class ProductsService {
   addProduct(product: Product): Observable<ServiceResponse> {
     return this.httpClient.post<ServiceResponse>(`${this.baseApiUrl}/api/Products`, product);
   }
+
+  getProduct(id: string): Observable<ServiceResponse> {
+    return this.httpClient.get<ServiceResponse>(`${this.baseApiUrl}/api/Products/${id}`)
+  }
 }
