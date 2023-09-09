@@ -1,17 +1,24 @@
+// Angular
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule } from './app-routing.module';
+
+// Project
 import { AppComponent } from './app.component';
-import { ProductsListComponent } from './components/products/products-list/products-list.component';
+import { AppRoutingModule } from './app-routing.module';
 import { ProductsService } from './services/products.service';
+import { AddProductComponent } from './components/products/add-product/add-product.component';
+import { ProductsListComponent } from './components/products/products-list/products-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProductsListComponent,
+    AddProductComponent,
+    ProductsListComponent
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule

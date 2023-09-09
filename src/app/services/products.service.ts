@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 // Project
+import { Product } from '../models/product.model';
 import { environment } from 'src/environments/environment';
 import { ServiceResponse } from '../models/service-response.model';
 
@@ -18,5 +19,9 @@ export class ProductsService {
 
   getAllProducts(): Observable<ServiceResponse> {
     return this.httpClient.get<ServiceResponse>(`${this.baseApiUrl}/api/Products/GetAllProducts`)
+  }
+
+  addProduct(product: Product): Observable<ServiceResponse> {
+    return this.httpClient.post<ServiceResponse>(`${this.baseApiUrl}/api/Products`, product);
   }
 }
