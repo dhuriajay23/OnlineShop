@@ -1,6 +1,6 @@
 // Angular
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from 'src/app/models/product.model';
 
 // Project
@@ -21,7 +21,7 @@ export class EditProductComponent {
     quantity: 0,
   };
 
-  constructor(private route: ActivatedRoute, private producService: ProductsService) { }
+  constructor(private route: ActivatedRoute, private producService: ProductsService, private router: Router) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe({
@@ -34,6 +34,17 @@ export class EditProductComponent {
               this.productDetails = <Product>response.data;
             }
           })
+        }
+      }
+    })
+  }
+
+  updateProduct() {
+    this.producService.updateProduct(this.productDetails.id, this.productDetails).subscribe({
+      next: (response) => {
+        var success = <Product>response.data;
+        if (success) {
+          this.router.navigate(['/products']);
         }
       }
     })

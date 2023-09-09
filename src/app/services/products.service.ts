@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 // Project
 import { Product } from '../models/product.model';
 import { environment } from 'src/environments/environment';
-import { ServiceResponse } from '../models/service-response.model';
+import { APIResponse } from '../models/api-response.model';
 
 @Injectable({
   providedIn: 'root'
@@ -17,15 +17,19 @@ export class ProductsService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getAllProducts(): Observable<ServiceResponse> {
-    return this.httpClient.get<ServiceResponse>(`${this.baseApiUrl}/api/Products/GetAllProducts`)
+  getAllProducts(): Observable<APIResponse> {
+    return this.httpClient.get<APIResponse>(`${this.baseApiUrl}/api/Products/GetAllProducts`)
   }
 
-  addProduct(product: Product): Observable<ServiceResponse> {
-    return this.httpClient.post<ServiceResponse>(`${this.baseApiUrl}/api/Products`, product);
+  addProduct(product: Product): Observable<APIResponse> {
+    return this.httpClient.post<APIResponse>(`${this.baseApiUrl}/api/Products`, product);
   }
 
-  getProduct(id: string): Observable<ServiceResponse> {
-    return this.httpClient.get<ServiceResponse>(`${this.baseApiUrl}/api/Products/${id}`)
+  getProduct(id: string): Observable<APIResponse> {
+    return this.httpClient.get<APIResponse>(`${this.baseApiUrl}/api/Products/${id}`)
+  }
+
+  updateProduct(id: string, updatedProduct: Product): Observable<APIResponse> {
+    return this.httpClient.put<APIResponse>(`${this.baseApiUrl}/api/Products/${id}`, updatedProduct)
   }
 }
