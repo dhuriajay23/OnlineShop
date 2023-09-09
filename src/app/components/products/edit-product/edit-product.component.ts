@@ -49,4 +49,15 @@ export class EditProductComponent {
       }
     })
   }
+
+  deleteProduct() {
+    this.producService.deleteProduct(this.productDetails.id).subscribe({
+      next: (response) => {
+        var product = <Product>response.data;
+        if (product) {
+          this.router.navigate(['/products']);
+        }
+      }
+    })
+  }
 }
